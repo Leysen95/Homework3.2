@@ -1,0 +1,21 @@
+package ru.hogwarts.school.model.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class FacultyNotFoundException extends RuntimeException {
+
+  private final long id;
+
+  public FacultyNotFoundException(long id) {
+
+    super("Faculty not found by id: [%s]".formatted(id));
+    this.id = id;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+}
